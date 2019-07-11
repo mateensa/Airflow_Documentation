@@ -1,0 +1,50 @@
+docker run -it mateen-ubuntu-box /bin/bash
+sudo apt-get update
+sudo apt-get install python-pip python-dev build-essentials
+pip install apache-airflow
+
+
+on linux 
+export SLUGIFY_USES_TEXT_UNIDECODE=yes
+install python 3.6
+install python-pip python-dev build-essentials
+pip install apache-airflow[postgres]
+
+docker pull ubuntu
+apt-get update
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt-get update
+sudo apt-get install python3.6
+python -V
+update-alternatives --list python
+update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+update-alternatives --install /usr/bin/python python /usr/bin/python3.4 2
+update-alternatives --list python
+update-alternatives --config python
+sudo apt-get install python-pip (sudo apt-get upgrade python-pip)
+sudo pip install --upgrade pip (optional)
+pip install "airflow[postgres, mssql, celery, rabbitmq]"
+
+wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz
+gunzip 'Python-3.6.6.tgz'
+mv Python-3.6.6.tar /home/
+cd /home/
+tar -xvf Python-3.6.6.tar
+cd Python-3.6.6
+sudo ./configure --enable-optimizations
+sudo make -j8
+sudo make install
+update-alternatives --install /home/Python-3.6.6/python python /home/Python-3.6.6 3
+update-alternatives --list python
+pip install "airflow[postgres, mssql, celery, rabbitmq]"
+
+
+Python for Anaconda 3.6.5
+pip install "airflow[postgres, mssql, celery, rabbitmq]"
+
+
+
+sudo apt install python3-pip
+sudo apt-get install python-setuptools python-dev build-essential
+sudo apt install python3-pip
