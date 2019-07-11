@@ -1,0 +1,65 @@
+Airflow Quickstart Doc: 
+-----------------------
+
+Airflow is workflow orchestration framework (creating, executing, and monitoring workflows or data pipelines) written in Python.
+Airflow was started in October 2014 by Maxime Beauchemin at Airbnb. 
+It was open source from the very first commit and officially brought under the Airbnb Github and announced in June 2015.
+The project joined the Apache Software Foundation’s incubation program in March 2016.
+
+DAG Architecture:- 
+In Airflow, a DAG – or a Directed Acyclic Graph – is a collection of all the tasks you want to run, organized in a way that reflects their relationships and dependencies.
+Its basically object in python which Airflow will call __init__ and execute() functions whereever user creates in global scope (sequential execution).
+
+For example, a simple DAG could consist of three tasks: A, B, and C. It could say that A has to run successfully before B can run, but C can run anytime. 
+It could say that task A times out after 5 minutes, and B can be restarted up to 5 times in case it fails. 
+It might also say that the workflow will run every night at 10pm, but shouldn’t start until a certain date
+
+Operators: 
+Each operator is a single DAG task in a DAG, they run in certain order based on dependencies with each other, based on trigger rule of other DAGS or tasks.
+by default they are atomic meaning, async with other DAG tasks, if multiple DAG tasks are doing same thing then we can combine them into single operator. 
+They can also be cross communicated if using XCOM
+BashOperator, PythonOperator, EmailOperator, SimpleHttpOperator, MySqlOperator, PostgresOperator, OracleOperator, JdbcOperator, etc., Sensor Operators.
+
+Core building blocks of Airflow are: 
+DAG: a description of the order in which work should take place
+Operator: a class that acts as a template for carrying out some work
+Task: a parameterized instance of an operator
+Task Instance: a task that 1) has been assigned to a DAG and 2) has a state associated with a specific run of the DAG
+By combining DAGs and Operators to create TaskInstances, you can build complex workflows.
+ 
+
+Airflow DAG advantages
+1. CLI -- Allows you to do all workflow and admin operations like creating / deleting / upgrading user or databases, pause / unpause / stop / start, check dag_state, etc., 
+2. Security - WebAuthentication password, LDAP, OAuth & Google Authentications
+3. Visualizations - Apart from existing charts and UI, It also allows you create charts on your own based on existing connections / data. 
+4. WebApplication Views: DAG View, Tree view, Graph View, Gantt chart, Duration chart, Code view, Variables view {Value of a variable will be hidden if the key contains any words in 
+	(‘password’, ‘secret’, ‘passwd’, ‘authorization’, ‘api_key’, ‘apikey’, ‘access_token’) by default, but can be configured to show in clear-text}
+5. We can Airflow with systemd or upstart 
+6. Stores password in encrypted format, if crypto python library is installed.
+7. Metadata repository to keep track of workflows usually mysql or postgres
+
+
+Cron and Airflow Comparison
+
+Using cron to manage my data pipelines became a headache, basically due to:
+It can not handle dependencies between tasks, so many times it forces to set up fixed execution times with ad-hoc guard times.
+It’s very difficult to add new jobs in complex crons. When to schedule a new heavy task? Some independent tasks share a common resource (i.e. a database) so it’s best to do not overlap them.
+Hard to debug and maintain. The crontab is just a text file.
+Rich logging have to be handled externally.
+Lack of stats. 
+
+Out of the box, with a pretty straightforward configuration, Airflow offers:
+Multiple operators like bash, http, slack, etc.
+Specify task dependencies is straightforward. It also provide flexible and extendable operators to implement conditions, branches, and task-skipping.
+Automatically retry failed jobs.
+Email notifications of tasks retries or failures.
+A terrific web interface to monitor the DAGs – a cool DAG visualization, gantt diagrams and task duration charts – and perform some maintenance.
+A powerfull CLI, useful to test new tasks or dags.
+Logging! The output of each task execution is saved in a file.
+Scaling! Integration with Apache Mesos and Celery.
+
+DAG in Production environments: 
+https://medium.com/airbnb-engineering/airflow-a-workflow-management-platform-46318b977fd8 (AirBnb)
+https://wecode.wepay.com/posts/airflow-wepay (WePay)
+https://medium.com/google-cloud/airflow-for-google-cloud-part-1-d7da9a048aa4 (Google Cloud Composer)
+https://towardsdatascience.com/why-quizlet-chose-apache-airflow-for-executing-data-workflows-3f97d40e9571 (Towards Data Science)
