@@ -17,8 +17,10 @@ It could say that task A times out after 5 minutes, and B can be restarted up to
 It might also say that the workflow will run every night at 10pm, but shouldn’t start until a certain date
 
 Operators: 
-Each operator is a single DAG task in a DAG, they run in certain order based on dependencies with each other, based on trigger rule of other DAGS or tasks.
-by default they are atomic meaning, async with other DAG tasks, if multiple DAG tasks are doing same thing then we can combine them into single operator. 
+Each operator is a single DAG task in a DAG, they run in certain order based on dependencies with each other, based on trigger rule of 
+other DAGS or tasks.
+by default they are atomic meaning, async with other DAG tasks, if multiple DAG tasks are doing same thing then we can combine them into 
+single operator. 
 They can also be cross communicated if using XCOM
 BashOperator, PythonOperator, EmailOperator, SimpleHttpOperator, MySqlOperator, PostgresOperator, OracleOperator, JdbcOperator, etc., Sensor Operators.
 
@@ -31,11 +33,14 @@ By combining DAGs and Operators to create TaskInstances, you can build complex w
  
 
 Airflow DAG advantages
-1. CLI -- Allows you to do all workflow and admin operations like creating / deleting / upgrading user or databases, pause / unpause / stop / start, check dag_state, etc., 
+1. CLI -- Allows you to do all workflow and admin operations like creating / deleting / upgrading user or databases, pause / unpause / 
+stop / start, check dag_state, etc., 
 2. Security - WebAuthentication password, LDAP, OAuth & Google Authentications
-3. Visualizations - Apart from existing charts and UI, It also allows you create charts on your own based on existing connections / data. 
-4. WebApplication Views: DAG View, Tree view, Graph View, Gantt chart, Duration chart, Code view, Variables view {Value of a variable will be hidden if the key contains any words in 
-	(‘password’, ‘secret’, ‘passwd’, ‘authorization’, ‘api_key’, ‘apikey’, ‘access_token’) by default, but can be configured to show in clear-text}
+3. Visualizations - Apart from existing charts and UI, It also allows you create charts on your own based on existing connections / 
+data. 
+4. WebApplication Views: DAG View, Tree view, Graph View, Gantt chart, Duration chart, Code view, Variables view {Value of a variable
+will be hidden if the key contains any words in (‘password’, ‘secret’, ‘passwd’, ‘authorization’, ‘api_key’, ‘apikey’, ‘access_token’) 
+by default, but can be configured to show in clear-text}
 5. We can Airflow with systemd or upstart 
 6. Stores password in encrypted format, if crypto python library is installed.
 7. Metadata repository to keep track of workflows usually mysql or postgres
