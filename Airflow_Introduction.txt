@@ -7,10 +7,12 @@ It was open source from the very first commit and officially brought under the A
 The project joined the Apache Software Foundation’s incubation program in March 2016.
 
 DAG Architecture:- 
-In Airflow, a DAG – or a Directed Acyclic Graph – is a collection of all the tasks you want to run, organized in a way that reflects their relationships and dependencies.
-Its basically object in python which Airflow will call __init__ and execute() functions whereever user creates in global scope (sequential execution).
+In Airflow, a DAG – or a Directed Acyclic Graph – is a collection of all the tasks you want to run
+, organized in a way that reflects their relationships and dependencies.
+Its basically object in python which Airflow will call,  __init__ and execute() functions whereever user creates in global scope (sequential execution).
 
-For example, a simple DAG could consist of three tasks: A, B, and C. It could say that A has to run successfully before B can run, but C can run anytime. 
+For example, a simple DAG could consist of three tasks: A, B, and C. It could say that A has to run successfully before B can run
+, but C can run anytime. 
 It could say that task A times out after 5 minutes, and B can be restarted up to 5 times in case it fails. 
 It might also say that the workflow will run every night at 10pm, but shouldn’t start until a certain date
 
